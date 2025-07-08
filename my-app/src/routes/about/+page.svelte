@@ -1,1 +1,0 @@
-<h1>A page about botblast</h1>

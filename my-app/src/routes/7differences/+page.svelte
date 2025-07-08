@@ -1,0 +1,1 @@
+<h1>A page about the 7 differences game</h1>

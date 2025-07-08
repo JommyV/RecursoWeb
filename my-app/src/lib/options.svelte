@@ -1,19 +1,26 @@
 <script>
     import { onMount } from "svelte";
   
-    let options = ["BotBlast", "JumpyUFO","7 differences", "Punch Line Inc", "EarForceOne"];
+    let options = ["BotBlast", "JumpyUFO","7 differences", "Punch Line Inc", "EarForceOne", "Skellyboy Adventures", "Red Herring"];
     
     let images = [
-        " /images/botblast.png",
-        " /images/botblast.png",
+        "/images/botblast.png",
         "/images/jumpyufo.png",
         "/images/7differences.png",
         "/images/punchlineinc.png",
-        "/images/earforceone.png"
+        "/images/earforceone.png",
+        "/images/skellyboyadventures.png",
+        "/images/redherring.png",
+
     ];
     let links = [
-        "/about",
-        "/about"
+        "/botblast",
+        "/redherring",
+        "/jumpyufo",
+        "/7differences",
+        "/punchlineinc",
+        "/earforceone",
+        "/skellyboy"
     ];
     let currentChoices = [];  // will hold 2 random indices
     let correctIndex;
@@ -57,10 +64,11 @@
       
         <div class="buttons">
           {#each currentChoices as idx, localIndex}
+          
             <a href={links[idx]}>
               <button type="button" on:click={() => pick(localIndex)}>
-                <img src={images[idx]} alt={options[idx]} />
-                <div>{options[idx]}</div>
+                <img src={images[idx]} alt={options[idx]}/>
+                <div class= "text-black">{options[idx]}</div>
               </button>
             </a>
           {/each}
@@ -71,6 +79,7 @@
     .game-container {
       text-align: center;
       margin-top: 50px;
+      color: azure;
     }
   
     .buttons {
@@ -98,9 +107,11 @@
     }
 
     button img {
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+    min-height: 230px;
     object-fit: contain;
     margin-bottom: 0.5rem;
-    }
+    border-radius: 0.375rem;
+   }
   </style>

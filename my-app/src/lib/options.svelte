@@ -65,7 +65,9 @@
     let highscore = 0;
     let showVideo = [false, false]; 
     let hasStarted = false;
-    let showInfo = true; // Flag to control the visibility of the info message
+    let showInfo = true; 
+    let showOption = false;
+    let messagePulse = false;
   
     function newRound() {
       indices = []; // Reset indices for new round
@@ -79,8 +81,9 @@
 
     currentChoices = [...indices];
     showVideo = [true, false]; // ativa o vídeo para ambos os botões
-    message = "Pick an option!";
+    message = "Video playing, please wait...";
     buttonsDisabled = true; 
+    messagePulse = true;
 
   }
   
@@ -118,50 +121,53 @@
     
 </script>
       
-    <div class="game-container">
+    <div class="game-container max-w-screen-lg mx-auto px-4">
       <div class= "flex justify-center">
-        <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center w-[50vw]">
-          {message}
+        <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center w-[50vw] pb-10 {messagePulse ? 'animate-pulse' : ''}">
+          {#if (showOption)} 
+          {message} 
+          {/if}
         </h2>
     </div>
       {#if !hasStarted}
   <div class="flex justify-center mt-10">
     <button
       class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-all" id="start-button"
-      on:click={() => { hasStarted = true; gameStarted.set(true); newRound(); }}
+      on:click={() => { hasStarted = true; gameStarted.set(true); newRound(); showOption = true; } }
     >
       🎮 Start Game
     </button>
   </div> 
 {:else}
-      <div class="buttons">
+      <div class="buttons flex flex-wrap justify-center gap-6 px-4">
         {#each currentChoices as idx, localIndex(idx)}
           <div in:fade={{ delay: 300, duration: 400 }} out:fade class= "flex flex-col items-center flex-wrap" >
             
               <button
                 type="button"
-                class={`bg-gray-700 text-white rounded-lg p-4 shadow-[4px_4px_0_0_#1f2937] hover:shadow-[6px_6px_0_0_#1f2937] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_0_#1f2937] transition-all duration-150 ease-in-out disabled:opacity-50 disabled:pointer-events-none ${shakingButtonIndex === localIndex ? 'shake' : ''}`}
+                class={`w-full max-w-xs bg-gray-700 text-white rounded-lg p-4 shadow-[4px_4px_0_0_#1f2937] hover:shadow-[6px_6px_0_0_#1f2937] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_0_#1f2937] transition-all duration-150 ease-in-out disabled:opacity-50 disabled:pointer-events-none ${shakingButtonIndex === localIndex ? 'shake' : ''}`}
+
                 on:click={() => pick(localIndex)}
                 
                 >
                 {#if showVideo[localIndex]}
-                <video
+                <video 
                   src={videos[idx]}
                   autoplay
                   playsinline
                   controls
                   volume="0,6"
-                  class="w-full max-w-[400px] rounded mb-2"
-                  on:ended={() => { if (localIndex === 0) showVideo = [false, true]; else buttonsDisabled = false; } }
+                  class="w-full max-w-sm rounded mb-2"
+                  on:ended={() => { if (localIndex === 0) showVideo = [false, true]; else {buttonsDisabled = false; message = "Choose a game!" ; messagePulse=false;} } }
                 ></video>
               {:else}
-                <img src={images[idx]} alt={options[idx]} class="mb-2" />
+                <img src={images[idx]} alt={options[idx]} class="mb-2 w-full max-w-sm" />
               {/if}
                 <div class="text-black">{options[idx]}</div>
               </button>
             
             <div class="pt-2 w-100 text-center flex flex-row justify-center items-center">
-              <p class="text-xs" style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;">
+              <p class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl" style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;">
               {descriptions[idx]}
               </p>
               {#if idx === 0 }
@@ -184,12 +190,12 @@
       color: azure;
     }
   
-    .buttons {
+    /* .buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
       margin-top: 20px;
-    }
+    } */
   
     button {
     display: flex;

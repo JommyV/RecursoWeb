@@ -7,12 +7,13 @@
 
 </script>
   
-<div class= "flex flex-col">
+<div class="flex flex-col items-center w-full px-4 max-w-screen-lg mx-auto">
 
-    <div>
+    <div class= "flex justify-center items-center pt-10">
         <h1
-        class="text-center text-5xl font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gray to-white drop-shadow-lg pt-12 pb-4 animate-pulse"
-        style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;">
+        class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gray to-white drop-shadow-lg pt-12 pb-4 animate-ping-slow break-words whitespace-normal "
+        style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; text-shadow: 0 2px 8px #ffffff, 0 0px 2px #00ffe7;"
+        >
         THE PORTFOLIO CAGE MATCH
         </h1>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -20,15 +21,16 @@
 
 
 
-        <div class="flex justify-center items-center pt-10 text-white flex-col">
-            <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center w-[50vw]">
+        <div class="text-white text-center mt-10 max-w-3xl">
+            <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center">
                 This is a game about games, learn about them and guess which had a higher grade 
-        </h2>
+            </h2>
+
             {#if !$gameStarted}
         
                 <h2
                     style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;"
-                    class="text-center w-[50vw] pt-10"
+                    class="text-xs sm:text-sm md:text-base pt-6 px-4"
                     out:fade
                 >
                     Videos autoplay and buttons become clickable after both videos end
@@ -36,7 +38,9 @@
             {/if}
       </div>
 
-    <TwoChoiceGame />
+      <div class="w-full mt-10">
+        <TwoChoiceGame />
+      </div>
 </div>
 
 <!-- <p class="text-white text-right ">

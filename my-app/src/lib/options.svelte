@@ -119,7 +119,11 @@
 </script>
       
     <div class="game-container">
-      <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center">{message}</h2>
+      <div class= "flex justify-center">
+        <h2 style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; letter-spacing: 2px; font-size: 1 rem; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;" class= "text-center w-[50vw]">
+          {message}
+        </h2>
+    </div>
       {#if !hasStarted}
   <div class="flex justify-center mt-10">
     <button
@@ -146,7 +150,7 @@
                   autoplay
                   playsinline
                   controls
-                  volume="0,3"
+                  volume="0,6"
                   class="w-full max-w-[400px] rounded mb-2"
                   on:ended={() => { if (localIndex === 0) showVideo = [false, true]; else buttonsDisabled = false; } }
                 ></video>
@@ -156,8 +160,12 @@
                 <div class="text-black">{options[idx]}</div>
               </button>
             
-            <div class="pt-2 w-100 text-center flex-col">{descriptions[idx]}
-              {#if idx === 0 }<a href="/botblast" class="text-blue-400 hover:underline justify-right">[1]</a>
+            <div class="pt-2 w-100 text-center flex flex-row justify-center items-center">
+              <p class="text-xs" style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; text-shadow: 0 2px 8px #fffff, 0 0px 2px #00ffe7;">
+              {descriptions[idx]}
+              </p>
+              {#if idx === 0 }
+              <a href="/botblast" class="text-blue-400 hover:underline justify-right text-xs">[1]</a>
               {/if}
             </div>
           </div> 

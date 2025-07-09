@@ -17,13 +17,14 @@
 
 <style>
     :global(body) {
-        background: #100;  
+         
         min-height: 100vh;
         margin: 0;
     }
         
     :global(.animate-ping-slow) {
             animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation-iteration-count: 1;
         }
         @keyframes ping {
             75%, 100% {

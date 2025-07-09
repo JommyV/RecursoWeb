@@ -81,7 +81,7 @@
 
     currentChoices = [...indices];
     showVideo = [true, false]; // ativa o vídeo para ambos os botões
-    message = "Video playing, please wait...";
+    message = "Videos playing, please wait...";
     buttonsDisabled = true; 
     messagePulse = true;
 

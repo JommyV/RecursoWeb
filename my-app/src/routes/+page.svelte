@@ -14,7 +14,7 @@
         class="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gray to-white drop-shadow-lg pt-12 pb-4 animate-ping-slow break-words whitespace-normal "
         style="font-family: 'Press Start 2P', 'VT323', 'Orbitron', 'Anton', monospace; text-shadow: 0 2px 8px #ffffff, 0 0px 2px #00ffe7;"
         >
-        THE PORTFOLIO CAGE MATCH
+        THE PORTFOLIO CAGE MATCH V2
         </h1>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     </div>
